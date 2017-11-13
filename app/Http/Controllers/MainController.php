@@ -13,6 +13,7 @@ class MainController extends Controller
     }
 
     public function upload(Request $request){
+    	// dd($request->file('photo'));
     	/////// CONFIG ///////
 		$username = 'azwar724';
 		$password = 'aamgaul724698';
@@ -46,6 +47,8 @@ class MainController extends Controller
 		} catch (\Exception $e) {
 		    echo 'Something went wrong: '.$e->getMessage()."\n";
 		}
+
+		echo $ig->getMessage();
     }
 }
 

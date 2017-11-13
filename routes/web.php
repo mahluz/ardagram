@@ -32,6 +32,8 @@ Route::get('checking',function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('test','TestController@index');
+
 Route::group(['middleware'=>'web'],function(){
 
 	Route::group(['middleware'=>'userMiddleware:1'],function(){
