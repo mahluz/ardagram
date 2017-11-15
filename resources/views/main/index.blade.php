@@ -21,7 +21,7 @@
         <div class="col-lg-4">
             <div class="widget widget-default widget-fluctuation">
                 <header class="widget-header">
-                    Monthly Revenue
+                    Instagram Profile
                     <div class="widget-header-actions">
                         <span class="widget-header-action fa fa-cog"></span>
                         <span data-close-widget class="widget-header-action fa fa-close"></span>
@@ -29,32 +29,34 @@
                 </header>
                 <div class="widget-body">
                     <section class="widget-fluctuation-period">
-                        <span class="widget-fluctuation-period-text"><strong>$17,468.45</strong> in <strong>February</strong></span><br>
-                        <button class="btn btn-sm btn-transparent-white" type="button"><span class="fa fa-calendar"></span> View Different Month</button>
+                        <img src="{{ $account->user->profile_pic_url }}" class="img img-circle img-responsive" alt="">
+                        <span class="widget-fluctuation-description-amount text-success">{{ $account->user->media_count }} Media Uploaded</span>
+                        {{-- <span class="widget-fluctuation-period-text"><strong>{{ $account->user->media_count }}</strong> total <strong> uploaded media</strong></span><br> --}}
+                        {{-- <button class="btn btn-sm btn-transparent-white" type="button"><span class="fa fa-calendar"></span> View Different Month</button> --}}
                     </section>
                     <section class="widget-fluctuation-description">
-                        <span class="widget-fluctuation-description-amount text-success">+$3,429.56</span>
-                        <span class="widget-fluctuation-description-text">increase on<br>last month</span>
+                        <span class="widget-fluctuation-description-amount text-success">Biography</span>
+                        <span class="widget-fluctuation-description-text">{{ $account->user->biography }}<br></span>
                     </section>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-4">
             <div class="widget widget-statistic widget-primary">
-                <header class="widget-statistic-header">Profit this quarter</header>
+                <header class="widget-statistic-header">Follower</header>
                 <div class="widget-statistic-body">
-                    <span class="widget-statistic-value">$27,294</span>
-                    <span class="widget-statistic-description">That's <strong>$2,593 more</strong> than this quarter last year</span>
+                    <span class="widget-statistic-value">{{ $account->user->follower_count }}</span>
+                    {{-- <span class="widget-statistic-description">That's <strong>$2,593 more</strong> than this quarter last year</span> --}}
                     <span class="widget-statistic-icon fa fa-credit-card-alt"></span>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-4">
             <div class="widget widget-statistic widget-purple">
-                <header class="widget-statistic-header">Closed support cases</header>
+                <header class="widget-statistic-header">Following</header>
                 <div class="widget-statistic-body">
-                    <span class="widget-statistic-value">59%</span>
-                    <span class="widget-statistic-description">That's <strong>12 less</strong> than this time last week</span>
+                    <span class="widget-statistic-value">{{ $account->user->following_count }}</span>
+                    {{-- <span class="widget-statistic-description">That's <strong>12 less</strong> than this time last week</span> --}}
                     <span class="widget-statistic-icon fa fa-support"></span>
                 </div>
             </div>
@@ -66,7 +68,7 @@
         <div class="col-lg-12">
             <div class="widget widget-default">
                 <header class="widget-header">
-                    Website Registrations
+                    Photo Upload Period
                     <div class="widget-header-actions">
                         <span class="widget-header-action fa fa-cog"></span>
                         <span data-close-widget class="widget-header-action fa fa-close"></span>

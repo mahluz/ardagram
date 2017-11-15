@@ -47,6 +47,12 @@ Route::group(['middleware'=>'web'],function(){
 		});
 		// end instagram group
 
+		Route::get('setting','SettingController@index');
+		Route::group(['prefix'=>'setting'],function(){
+			Route::post('update','SettingController@update');
+		});
+		// end setting group
+
 	});
 	// end userMiddleware middleware group
 	

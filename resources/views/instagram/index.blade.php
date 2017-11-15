@@ -42,7 +42,14 @@
 			                    <input type="text" placeholder="Search Inbox..." class="form-control inbox-search-input"><button class="btn btn-transparent btn-transparent-white">Search</button>
 			                </div>
 			            </form>
-			            <h1 class="inbox-main-heading">Auto Post <small>Status <span class="typcn typcn-media-play-outline"> <small>Running</small></span></small></h1>
+			            <h1 class="inbox-main-heading">Auto Post <small>Status 
+			            	@if($instagram->status == "running")
+			            		<span class="typcn typcn-media-play-outline"> <small>Running</small></span>
+			            	@elseif($instagram->status == "stopped")
+			            		<span class="typcn typcn-media-stop-outline"> <small>Stopped</small></span>
+			            	@endif
+			            </small>
+			            </h1>
 			        </div>
 			        <div class="inbox-actions">
 			            <form method="post" class="form-inline" action="">

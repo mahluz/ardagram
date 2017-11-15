@@ -58,14 +58,19 @@
                 </li>
                 <li class="sidebar-nav-link @yield('instagram-active')">
                     <a href="{{ url('instagram') }}">
-                        <span class="typcn typcn-shopping-bag sidebar-nav-link-logo"></span> Instagram <span class="typcn typcn-media-pause-outline sidebar-nav-link-badge"> Paused</span><span class="typcn typcn-media-play-outline sidebar-nav-link-badge"> Running</span>
+                        <span class="typcn typcn-shopping-bag sidebar-nav-link-logo"></span> Instagram 
+                        @if($status->status == "running")
+                            <span class="typcn typcn-media-play-outline sidebar-nav-link-badge"> Running</span>
+                        @elseif($status->status == "stopped")
+                            <span class="typcn typcn-media-stop-outline sidebar-nav-link-badge"> Stopped</span>
+                        @endif
                     </a>
                 </li>
                 <li class="sidebar-nav-heading">
                     SUB MENU
                 </li>
                 <li class="sidebar-nav-link ">
-                    <a href="tables.html">
+                    <a href="{{ url('setting') }}">
                         <span class="typcn typcn-th-small sidebar-nav-link-logo"></span> Setting
                     </a>
                 </li>

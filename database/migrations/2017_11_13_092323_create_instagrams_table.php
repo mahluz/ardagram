@@ -18,7 +18,8 @@ class CreateInstagramsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('username');
             $table->string('password');
-            $table->string('status');
+            $table->string('run_at')->default(0);
+            $table->string('status')->default('stopped');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

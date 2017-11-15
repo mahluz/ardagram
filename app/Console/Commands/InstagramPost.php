@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Request;
 use Intervention\Image\Facades\Image;
 
 use App\User;
+use App\Instagram;
 
 class InstagramPost extends Command
 {
@@ -43,10 +44,11 @@ class InstagramPost extends Command
      */
     public function handle(Request $request)
     {
+        $data["instagram"] = Instagram::orderBy('id','asc')->first();
 
         /////// CONFIG ///////
-        $username = 'azwar724';
-        $password = 'aamgaul724698';
+        $username = $data["instagram"]->username;
+        $password = $data["instagram"]->password;
         $debug = false;
         $truncatedDebug = false;
         ////////////////////// 
@@ -55,7 +57,7 @@ class InstagramPost extends Command
         // or
         // $photoFile = File::get('storage/app/public/demo.jpg');
         // or
-        $photoFile = url('ardagram/public/img/profile.jpg');
+        $photoFile = url('ardagram/public/img/demo.jpg');
         // or
         // $photoFile = $request->file('photo'); // work tapi ini upload manual lewat form file
 

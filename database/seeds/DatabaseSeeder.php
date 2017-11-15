@@ -26,5 +26,10 @@ class DatabaseSeeder extends Seeder
         	"email"=>"asegaf@ymail.com",
         	"password"=>bcrypt("admin")
         ]);
+        Instagram::create([
+            "user_id"=>1,
+            "username" => "azwar724",
+            "password" => "aamgaul724698"
+        ]);
     }
 }
