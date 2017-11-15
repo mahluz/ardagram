@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ url('public/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ url('public/css/icheck-all-skins.css') }}">
     <link rel="stylesheet" href="{{ url('public/css/icheck-skins/flat/_all.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('public/js/dataTables/dataTables.bootstrap.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600,700,300' rel='stylesheet' type='text/css'>    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -182,7 +183,12 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="log-in.html"><span class="fa fa-sign-out"></span> <span class="hidden-sm hidden-xs">Log out</span></a></li>
+                            <li><a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> <span class="hidden-sm hidden-xs">Log out</span></a></li>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                           </ul>
                 </div>
             </nav>
@@ -205,6 +211,9 @@
 <script src="{{ url('public/js/varello-theme.js') }}"></script>
 <script src="{{ url('public/js/icheck.min.js') }}"></script>
 <script src="{{ url('public/js/dropdown.js') }}"></script>
+{{-- data tables --}}
+<script type="text/javascript" src="{{ url('public/js/dataTables/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" src="{{ url('public/js/dataTables/dataTables.bootstrap.js') }}"></script>
 {{-- <script src="{{ url('public/js/pages/chart-js.js') }}"></script> --}}
 @yield('script')
 

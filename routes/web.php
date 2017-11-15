@@ -43,7 +43,9 @@ Route::group(['middleware'=>'web'],function(){
 
 		Route::get('instagram','InstagramController@index')->name('instagram');
 		Route::group(['prefix'=>'instagram'],function(){
-			
+			Route::post('play','InstagramController@play');
+			Route::post('create','InstagramController@create');
+			Route::post('delete','InstagramController@delete');			
 		});
 		// end instagram group
 

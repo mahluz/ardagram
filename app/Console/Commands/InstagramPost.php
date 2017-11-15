@@ -10,6 +10,7 @@ use Intervention\Image\Facades\Image;
 
 use App\User;
 use App\Instagram;
+use App\Photo;
 
 class InstagramPost extends Command
 {
@@ -45,6 +46,7 @@ class InstagramPost extends Command
     public function handle(Request $request)
     {
         $data["instagram"] = Instagram::orderBy('id','asc')->first();
+        $data["photo"] = Photo::where('id',$data["instagram"]->run_at)->first();
 
         /////// CONFIG ///////
         $username = $data["instagram"]->username;
@@ -57,7 +59,9 @@ class InstagramPost extends Command
         // or
         // $photoFile = File::get('storage/app/public/demo.jpg');
         // or
-        $photoFile = url('ardagram/public/img/demo.jpg');
+        // $photoFile = url('ardagram/public/img/demo.jpg');
+        // or
+        $photoFile = url('ardagram/storage/app/'.$data["photo"]->path);
         // or
         // $photoFile = $request->file('photo'); // work tapi ini upload manual lewat form file
 
@@ -70,15 +74,28 @@ class InstagramPost extends Command
             $this->info('Something went wrong: '.$e->getMessage()."\n");
             exit(0);
         }
-        try {
-            // upload code
 
-            $resizer = new \InstagramAPI\MediaAutoResizer($photoFile);
+        // upload code
+        if($data["instagram"]->status == "running"){
 
-            $ig->timeline->uploadPhoto($resizer->getFile(), ['caption' => $captionText]);
-        } catch (\Exception $e) {
-            $this->info('Something went wrong: '.$e->getMessage()."\n");
+            try {
+                $resizer = new \InstagramAPI\MediaAutoResizer($photoFile);
+
+                $ig->timeline->uploadPhoto($resizer->getFile(), ['caption' => $captionText]);
+
+                Instagram::where('id',1)->update([
+                    "run_at" => $data["instagram"]->run_at+1
+                ]);
+
+                Photo::where('id',$data["instagram"]->run_at)->update([
+                    "status" => "sent"
+                ]);
+
+            } catch (\Exception $e) {
+                $this->info('Something went wrong: '.$e->getMessage()."\n");
+            }
         }
+        // end if
 
         $this->info('photo has been posted');
     }
