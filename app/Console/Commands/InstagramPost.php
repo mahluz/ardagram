@@ -78,21 +78,27 @@ class InstagramPost extends Command
         // upload code
         if($data["instagram"]->status == "running"){
 
-            try {
-                $resizer = new \InstagramAPI\MediaAutoResizer($photoFile);
+            if ($data["photo"]) {
+                try {
+                    $resizer = new \InstagramAPI\MediaAutoResizer($photoFile);
 
-                $ig->timeline->uploadPhoto($resizer->getFile(), ['caption' => $captionText]);
+                    $ig->timeline->uploadPhoto($resizer->getFile(), ['caption' => $captionText]);
 
+                    Instagram::where('id',1)->update([
+                        "run_at" => $data["instagram"]->run_at+1
+                    ]);
+
+                    Photo::where('id',$data["instagram"]->run_at)->update([
+                        "status" => "sent"
+                    ]);
+
+                } catch (\Exception $e) {
+                    $this->info('Something went wrong: '.$e->getMessage()."\n");
+                }
+            } else {
                 Instagram::where('id',1)->update([
-                    "run_at" => $data["instagram"]->run_at+1
+                    "status" => "stopped"
                 ]);
-
-                Photo::where('id',$data["instagram"]->run_at)->update([
-                    "status" => "sent"
-                ]);
-
-            } catch (\Exception $e) {
-                $this->info('Something went wrong: '.$e->getMessage()."\n");
             }
         }
         // end if

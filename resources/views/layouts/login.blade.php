@@ -38,7 +38,7 @@
         <div class="page-wrapper">
             <div id="login-hidden" style="display: none;">
                 <div class="log-in-wrapper">
-                      <h1 class="log-in-title">Welcome to <strong class="text-primary">Varello</strong>Admin<br><small>Please enter your details</small></h1>
+                      <h1 class="log-in-title">Welcome to <strong class="text-primary">Arda</strong>gram<br><small>Please enter your details</small></h1>
                       @yield('content')
                 </div>
             </div>

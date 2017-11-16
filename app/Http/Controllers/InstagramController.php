@@ -19,6 +19,42 @@ class InstagramController extends Controller
     	return view('instagram.index',$data);
     }
 
+    public function upload(Request $request){
+    	// dd($request->file('photo'));
+
+    	$data["instagram"] = Instagram::orderBy('id','desc')->first();
+
+    	/////// CONFIG ///////
+		$username = $data["instagram"]->username;
+		$password = $data["instagram"]->password;
+		$debug = false;
+		$truncatedDebug = false;
+		//////////////////////
+		/////// MEDIA ////////
+		// $photoFilename = 'zulham';
+		$metaData = [
+			"caption" => $request["caption"]
+		];
+		//////////////////////
+		$ig = new \InstagramAPI\Instagram($debug, $truncatedDebug);
+		try {
+		    $ig->login($username, $password);
+		} catch (\Exception $e) {
+		    echo 'Something went wrong: '.$e->getMessage()."\n";
+		    exit(0);
+		}
+		try {
+		   
+		    $resizer = new \InstagramAPI\MediaAutoResizer($request->file('photo'));
+		    $ig->timeline->uploadPhoto($resizer->getFile(),$metaData);
+		} catch (\Exception $e) {
+		    echo 'Something went wrong: '.$e->getMessage()."\n";
+		}
+
+		return redirect('instagram');
+
+    }
+
     public function play(Request $request){
     	// dd($request);
     	if($request->status == "play"){

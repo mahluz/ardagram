@@ -21,7 +21,11 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h1 class="inbox-main-heading">Manual Post</h1>
-			<form class="form" method="post" action="{{ url('upload') }}" enctype="multipart/form-data">
+			<form class="form" method="post" action="{{ url('instagram/upload') }}" enctype="multipart/form-data">
+				<div class="form-group">
+					<label class="label label-default">Caption: </label>
+					<input type="text" class="form-control" name="caption">
+				</div>
 				<div class="form-group">
 					<label>Select Photo</label>
 					<input type="file" name="photo">

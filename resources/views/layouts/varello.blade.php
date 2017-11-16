@@ -81,7 +81,7 @@
             <header class="top-header">
 
             <a href="index.html" class="top-header-logo">
-                    <span class="text-primary">Varello</span>Admin
+                    <span class="text-primary">Arda</span>gram
             </a>
 
             <nav class="navbar navbar-default">
@@ -103,8 +103,8 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" data-dropdown-in="flipInX" data-dropdown-out="zoomOut">
-                            <li class="hidden-sm hidden-xs hidden-md"><a href="#">Welcome to <strong>Varello</strong>Admin.</a></li>
-                            <li class="item-feed dropdown">
+                            <li class="hidden-sm hidden-xs hidden-md"><a href="#">Welcome to <strong>Arda</strong>gram</a></li>
+                            {{-- <li class="item-feed dropdown">
                                 <a href="#" class="item-feed-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-envelope"></span> <span class="badge badge-primary item-feed-badge">15</span></a>
                                 <ul class="dropdown-menu dropdown-menu-messages">
                                     <li>
@@ -182,7 +182,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li><a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> <span class="hidden-sm hidden-xs">Log out</span></a></li>
