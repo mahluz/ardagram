@@ -24,7 +24,7 @@
 			<form class="form" method="post" action="{{ url('instagram/upload') }}" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="label label-default">Caption: </label>
-					<input type="text" class="form-control" name="caption">
+					<textarea class="form-control" name="caption"></textarea>
 				</div>
 				<div class="form-group">
 					<label>Select Photo</label>
@@ -59,6 +59,7 @@
 			            <form method="post" class="form-inline" action="{{ url('instagram/play') }}">
 			            	<div class="form-group">
 			            		<input type="number" placeholder="play from" class="form-control" name="run_at">
+			            		<input type="number" placeholder="end at" class="form-control" name="end_at">
 			            		{{ csrf_field() }}
 			            		<button name="status" value="play" class="btn btn-transparent btn-transparent-white btn-sm" type="submit"><span class="typcn typcn-media-play-outline"></span> Play</button>
 			            		<button name="status" value="stop" class="btn btn-transparent btn-transparent-white btn-sm" type="submit"><span class="typcn typcn-media-stop-outline"></span> Stop</button>
@@ -86,7 +87,7 @@
 				        <tbody>
 				        	@foreach($photo as $index => $ini)
 				        	<tr @if($instagram->run_at == $ini->id) class="table-inbox-row-unread" @endif>
-				        		<td>{{ $index+1 }}</td>
+				        		<td>{{ $ini->id }}</td>
 				        		<td>{{ $ini->caption }}</td>
 				        		<td>
 				        			<a href="#" class="typcn typcn-zoom-outline" title="Header" data-toggle="popover" data-content="<img src='{{ url('storage/app/'.$ini->path) }}' class='img-responsive' ></img> Zulhamn"></a>
@@ -149,7 +150,7 @@
 					<form class="form" method="post" action="{{ url('instagram/create') }}" enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="label label-default">Caption: </label>
-							<input type="text" class="form-control" name="caption">
+							<textarea class="form-control" name="caption"></textarea>
 						</div>
 						<div class="form-group">
 							<label class="label label-default">Photo: </label>

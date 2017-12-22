@@ -61,6 +61,7 @@ class InstagramController extends Controller
 
 	    	$db["instagram"] = Instagram::where('id',1)->update([
 	    		"run_at" => $request["run_at"],
+                "end_at" => $request["end_at"],
 	    		"status" => "running"
 	    	]);
 
@@ -68,6 +69,7 @@ class InstagramController extends Controller
 
     		$db["instagram"] = Instagram::where('id',1)->update([
 	    		"run_at" => "0",
+                "end_at" => "0",
 	    		"status" => "stopped"
 	    	]);
 
