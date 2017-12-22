@@ -19,6 +19,7 @@ class CreateInstagramsTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('run_at')->default(0);
+            $table->string('end_at')->default(0);
             $table->string('status')->default('stopped');
             $table->timestamps();
 

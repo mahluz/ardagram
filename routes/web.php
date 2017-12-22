@@ -39,10 +39,11 @@ Route::group(['middleware'=>'web'],function(){
 	Route::group(['middleware'=>'userMiddleware:1'],function(){
 
 		Route::get('main','MainController@index');
-		Route::post('upload','MainController@upload');
+		// Route::post('upload','MainController@upload');
 
 		Route::get('instagram','InstagramController@index')->name('instagram');
 		Route::group(['prefix'=>'instagram'],function(){
+			Route::post('upload','InstagramController@upload');
 			Route::post('play','InstagramController@play');
 			Route::post('create','InstagramController@create');
 			Route::post('delete','InstagramController@delete');			
