@@ -35,14 +35,7 @@ class TestController extends Controller
 		    echo 'Something went wrong: '.$e->getMessage()."\n";
 		    exit(0);
 		}
-		$userId = $ig->people->getUserIdForName('iwanmuhammad62');
-		$response = $ig->people->getInfoById($userId);
-		
-		// $ig->people->follow($userId);
 
-		// echo $data["ig"] = $ig->account_id;
-
-		return Response::json($ig);
 		// return Response::json($response->getUser());
 		// return Response::json($ig->people->getFollowers($userId));
 		// return $response->getUser()->getFollowerCount();
