@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('instagram:post')
-                 ->everyMinute();
+        // $schedule->command('instagram:post')
+        //          ->everyMinute();
     }
 
     /**
